@@ -20,5 +20,5 @@ render_html.pyを実行すると、「Excel作業内容」フォルダ内に保�
 This code in under [MIT license](https://en.wikipedia.org/wiki/MIT_License)
 
 ## Author
-[GitHub](https://github.com/android-sushi)
+[GitHub](https://github.com/android-sushi)<br>
 [Twitter](https://twitter.com/android_sushi)
