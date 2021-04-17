@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 
 
-def read_excel_work():
+def read_excel_works():
     dir_path = pathlib.Path('Excel作業内容/2021/04/01')
 
     excel_data = {}
@@ -43,7 +43,7 @@ def read_excel_work():
 
 
 if __name__ == '__main__':
-    excel_data = read_excel_work()
+    excel_data = read_excel_works()
     for keys, values in excel_data.items():
         print(keys)
         for key, value in values.items():
