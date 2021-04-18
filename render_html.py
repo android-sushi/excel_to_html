@@ -1,9 +1,8 @@
 from jinja2 import Environment, FileSystemLoader
 from read_excel_works import read_excel_works
-from read_excel_messages import read_excel_messages
-from read_excel_accidents import read_excel_accidents
+from read_excel_messages_or_accidents import read_excel_messages_or_accidents
 from datetime import datetime
-from pprint import pprint
+# from pprint import pprint
 
 
 def symbol_filter(arg):
@@ -16,15 +15,14 @@ def symbol_filter(arg):
 def main():
     env = Environment(loader=FileSystemLoader('./', encoding='utf8'))
     env.filters['symbol_filter'] = symbol_filter
-    tmpl = env.get_template('template.html')
+    tmpl = env.get_template('template.html')  
 
-    works = []
-    persons = []
-
-    messages = read_excel_messages()
-    accidents = read_excel_accidents()
+    messages = read_excel_messages_or_accidents(0)
+    accidents = read_excel_messages_or_accidents(1)
     excel_works_data = read_excel_works()
     for keys, values in excel_works_data.items():
+        works = []
+        persons = []
         company_name = keys
         date = values['日付'].strftime('%Y/%m/%d')
 
@@ -50,9 +48,6 @@ def main():
         out_file_name = '出力ファイル/' + company_name + '.html'
         with open(out_file_name, 'w', encoding='utf-8') as f:
             f.write(str(html))
-
-        works = []
-        persons = []
 
 
 if __name__ == '__main__':
